@@ -7,7 +7,8 @@ class Atm:
         self.menu()
 
     def menu(self):
-        choose_option = input("""
+        while True:  # Keep looping until explicit exit
+            choose_option = input("""
 Hello, welcome to Bank of Bharat!
 Press 1 to create a pin.
 Press 2 to check balance.
@@ -15,16 +16,19 @@ Press 3 to make a deposit.
 Press 4 to withdraw.
 Press 5 to exit.
 """)
-        if choose_option == '1':
-            self.create_pin()
-        if choose_option == '2':
-            self.check_balance()
-        if choose_option == '3':
-            self.deposit()
-        if choose_option == '4':
-            self.withdraw()
-        if choose_option == '5':
-            print("Jai Sri Krishna")
+            if choose_option == '1':
+                self.create_pin()
+            elif choose_option == '2':
+                self.check_balance()
+            elif choose_option == '3':
+                self.deposit()
+            elif choose_option == '4':
+                self.withdraw()
+            elif choose_option == '5':
+                print("Jai Sri Krishna")
+                break  # Exit the loop when user chooses '5'
+            else:
+                print("Invalid option. Please try again.")
 
     def create_pin(self):
         self.pin = int(input("Enter new pin number: "))
@@ -40,9 +44,10 @@ Press 5 to exit.
 
     def withdraw(self):
         amount = int(input("Enter withdraw amount: "))
-        if amount >= self.balance:
+        if amount <= self.balance:
             self.balance -= amount
             print("New balance is", self.balance)
 
 
 bob = Atm()
+sbi = Atm()
